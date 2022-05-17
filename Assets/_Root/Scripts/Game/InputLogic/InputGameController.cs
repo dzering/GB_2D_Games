@@ -7,7 +7,7 @@ namespace MyGame.Game.InputLogic
 {
     internal class InputGameController : BaseController
     {
-        private readonly ResourcePath path = new ResourcePath("Prefabs/InputLogic/Accelerate");
+        private readonly ResourcePath path = new ResourcePath("Prefabs/InputLogic/Keyboard");
         private BaseInputView inputView;
 
         public InputGameController(SubscriptionProperty<float> leftMoveDiff, SubscriptionProperty<float> rightMoveDif, CarModel car)

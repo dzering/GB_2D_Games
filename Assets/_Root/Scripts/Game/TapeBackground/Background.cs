@@ -16,8 +16,8 @@ namespace MyGame.Game.TapeBackground
 
         private void Awake()
         {
-            size = spriteRenderer.size;
             cashPosition = transform.position;
+            size = spriteRenderer.size;
         }
 
 
@@ -27,7 +27,7 @@ namespace MyGame.Game.TapeBackground
             position += Vector3.right * value * relativeSpeedRate;
 
             if (position.x <= LeftBorder)
-                position.x = RightBorder - (LeftBorder + position.x);
+                position.x = RightBorder - (LeftBorder - position.x);
 
             if (position.x >= RightBorder)
                 position.x = LeftBorder + (RightBorder - position.x);
