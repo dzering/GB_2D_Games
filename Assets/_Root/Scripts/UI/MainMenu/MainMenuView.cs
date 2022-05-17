@@ -6,16 +6,19 @@ namespace MyGame.UI
 {
     internal class MainMenuView : MonoBehaviour
     {
-        [SerializeField] private Button buttonStart;
+        [SerializeField] private Button gameButton;
+        [SerializeField] private Button settingButton;
 
-        public void Init(UnityAction startGame)
+        public void Init(UnityAction startGame, UnityAction settingMenu)
         {
-            buttonStart.onClick.AddListener(startGame);
+            gameButton.onClick.AddListener(startGame);
+            settingButton.onClick.AddListener(settingMenu);
         }
 
         private void OnDestroy()
         {
-            buttonStart.onClick.RemoveAllListeners();
+            gameButton.onClick.RemoveAllListeners();
+            settingButton.onClick.RemoveAllListeners();
         }
 
     }

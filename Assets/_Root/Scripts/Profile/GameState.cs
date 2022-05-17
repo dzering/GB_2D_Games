@@ -4,6 +4,7 @@ namespace MyGame.Profile
     {
         None,
         Start,
-        Game
+        Game,
+        Setting
     }
 }

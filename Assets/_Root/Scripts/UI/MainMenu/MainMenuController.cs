@@ -16,13 +16,13 @@ namespace MyGame.UI
         {
             this.profilePlayer = profilePlayer;
             view = LoadView(placeForUI);
-            view.Init(StartGame);
+            view.Init(StartGame, SettingMenu);
         }
 
         private MainMenuView LoadView(Transform placeForUI)
         {
             GameObject viewPref = ResourceLoader.LoadPref(path);
-            GameObject view = GameObject.Instantiate(viewPref, placeForUI, false);
+            GameObject view = Object.Instantiate(viewPref, placeForUI, false);
 
             AddGameObject(view);
 
@@ -32,6 +32,11 @@ namespace MyGame.UI
         private void StartGame()
         {
             profilePlayer.CurrentState.Value = GameState.Game;
+        }
+
+        private void SettingMenu()
+        {
+            profilePlayer.CurrentState.Value = GameState.Setting;
         }
     }
 }
