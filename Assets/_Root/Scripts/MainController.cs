@@ -32,6 +32,8 @@ internal class MainController : BaseController
                 mainMenuController = new MainMenuController(placeForUI, profilePlayer);
                 break;
             case GameState.Game:
+                mainMenuController?.Dispose();
+                gameController = new GameController(profilePlayer);
                 break;
             default:
                 break;
