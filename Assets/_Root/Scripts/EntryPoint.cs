@@ -7,6 +7,7 @@ namespace MyGame
     {
         private const float SpeedCar = 15f;
         private const GameState InitiialState = GameState.Start;
+        private const CarType carType = CarType.SpeedCar;
 
 
         [SerializeField] private Transform PlaceForUI;
@@ -14,7 +15,7 @@ namespace MyGame
 
         private void Start()
         {
-            ProfilePlayer profilePlayer = new ProfilePlayer(InitiialState, SpeedCar);
+            ProfilePlayer profilePlayer = new ProfilePlayer(InitiialState, SpeedCar, carType);
             mainController = new MainController(PlaceForUI, profilePlayer);
         }
 

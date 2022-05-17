@@ -4,11 +4,13 @@ using MyGame.Game.TapeBackground;
 using MyGame.Profile;
 using MyGame.Tools;
 using MyGame.Game.InputLogic;
+using System;
 
 namespace MyGame.Game
 {
     internal class GameController : BaseController
     {
+        private readonly ProfilePlayer profilePlayer;
         public GameController(ProfilePlayer profilePlayer)
         {
             SubscriptionProperty<float> leftMoveDiff = new SubscriptionProperty<float>();
@@ -19,9 +21,26 @@ namespace MyGame.Game
 
             InputGameController inputController = new InputGameController(leftMoveDiff, rightMoveDiff, profilePlayer.CarModel);
 
-            CarController carController = new CarController();
+            CarController carController = LoadCar(profilePlayer.currentCar);
             AddController(carController);
 
+        }
+
+        private CarController LoadCar(CarType carType)
+        {
+            CarController car = null;
+            switch (carType)
+            {
+                case CarType.Truck:
+                    car = new CarController();
+                    break;
+                case CarType.SpeedCar:
+                    car = new SpeedCarController();
+                    break;
+                default:
+                    break;
+            }
+            return car;
         }
     }
 }

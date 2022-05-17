@@ -5,7 +5,7 @@ namespace MyGame.Game.Car
 {
     internal class CarController : BaseController
     {
-        private readonly ResourcePath path = new ResourcePath("Prefabs/Cars/Car");
+        protected virtual ResourcePath path => new ResourcePath("Prefabs/Cars/Car");
         private readonly CarView view;
 
         public CarController()
