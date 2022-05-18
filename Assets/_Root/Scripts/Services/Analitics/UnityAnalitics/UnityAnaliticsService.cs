@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MyGame.Services.Analitics;
+using UnityEngine;
 
 namespace MyGame.Services.Analitics.UnityAnalitics
 {
@@ -8,6 +9,7 @@ namespace MyGame.Services.Analitics.UnityAnalitics
         public void SendEvent(string alias)
         {
             UnityEngine.Analytics.Analytics.CustomEvent(alias);
+            Debug.Log("UnityAnalitics SendEvent");
         }
 
         public void SendEvent(string alias, Dictionary<string, object> eventData)

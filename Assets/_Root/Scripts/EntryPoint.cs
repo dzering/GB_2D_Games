@@ -1,5 +1,6 @@
 using UnityEngine;
 using MyGame.Profile;
+using MyGame.Services.Analitics;
 
 namespace MyGame
 {
@@ -11,12 +12,16 @@ namespace MyGame
 
 
         [SerializeField] private Transform PlaceForUI;
+        [SerializeField] private AnaliticsManager analiticsManager;
+
         private MainController mainController;
 
         private void Start()
         {
             ProfilePlayer profilePlayer = new ProfilePlayer(InitiialState, SpeedCar, carType);
-            mainController = new MainController(PlaceForUI, profilePlayer);
+            mainController = new MainController(PlaceForUI, profilePlayer, analiticsManager);
+
+            analiticsManager.GameLaunched();
         }
 
         private void OnDestroy()

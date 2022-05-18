@@ -17,9 +17,14 @@ namespace MyGame.Services.Analitics
             };
         }
 
-        public void SendMainMenuOpend()
+        public void GameLaunched()
         {
-            SendEvent("MainMenuOpend");
+            SendEvent("Game Launched");
+        }
+
+        public void GameStarted()
+        {
+            SendEvent("Game Started");
         }
 
         private void SendEvent(string eventName)
