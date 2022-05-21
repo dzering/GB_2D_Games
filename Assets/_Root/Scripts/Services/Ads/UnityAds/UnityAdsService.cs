@@ -8,6 +8,9 @@ namespace MyGame.Services.Ads.UnityAds
 {
     internal class UnityAdsService : MonoBehaviour, IUnityAdsInitializationListener, IAdsService
     {
+
+        public static UnityAdsService Instance { get; private set; }
+
         [Header("Components")]
         [SerializeField] private UnityAdsSettings settings;
 
@@ -25,6 +28,11 @@ namespace MyGame.Services.Ads.UnityAds
 
         private void Awake()
         {
+            if (Instance != null && Instance != this)
+                Destroy(this);
+            else
+                Instance = this;
+
             InitializeAds();
             InitializePlayers();
         }

@@ -3,7 +3,7 @@ using MyGame;
 using UnityEngine;
 using MyGame.UI;
 using MyGame.Tools;
-using MyGame.Services.Ads;
+using MyGame.Services.Ads.UnityAds;
 
 namespace MyGame.UI
 {
@@ -12,13 +12,11 @@ namespace MyGame.UI
         private readonly ResourcePath path = new ResourcePath("Prefabs/ui/MainMenu");
         private readonly MainMenuView view;
         private readonly ProfilePlayer profilePlayer;
-        private readonly IAdsService adsService;
 
-        public MainMenuController(Transform placeForUI, ProfilePlayer profilePlayer,  IAdsService adsService)
+        public MainMenuController(Transform placeForUI, ProfilePlayer profilePlayer)
         {
             this.profilePlayer = profilePlayer;
             view = LoadView(placeForUI);
-            this.adsService = adsService;
 
             view.Init(StartGame, SettingMenu, OnAdsInitialize);
         }
@@ -45,8 +43,8 @@ namespace MyGame.UI
 
         private void OnAdsInitialize()
         {
-            if(adsService.IsInitialized)
-                adsService.InterstitialPlayer.Play();
+            if(UnityAdsService.Instance.IsInitialized)
+                UnityAdsService.Instance.InterstitialPlayer.Play();
         }
     }
 }

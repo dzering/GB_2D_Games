@@ -1,5 +1,5 @@
-﻿using MyGame.Profile;
-using System;
+﻿using UnityEngine.Advertisements;
+using MyGame.Profile;
 using UnityEngine;
 using MyGame.Tools;
 
@@ -18,6 +18,7 @@ namespace MyGame.UI
             this.profilePlayer = profilePlayer;
             view.Init(BackToMenu);
         }
+
 
         private SettingMenuView LoadView(Transform placeForUI)
         {

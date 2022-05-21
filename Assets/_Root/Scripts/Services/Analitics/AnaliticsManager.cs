@@ -7,10 +7,17 @@ namespace MyGame.Services.Analitics
 {
     internal class AnaliticsManager : MonoBehaviour 
     {
+        public static AnaliticsManager Instance { get; private set; }
+
         private IAnaliticsService[] services;
 
         private void Awake()
         {
+            if (Instance != null && Instance != this)
+                Destroy(this);
+            else
+                Instance = this;
+
             services = new IAnaliticsService[]
             {
                 new UnityAnaliticsService()

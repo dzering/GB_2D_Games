@@ -11,21 +11,16 @@ internal class MainController : BaseController
     private readonly ProfilePlayer profilePlayer;
     private readonly Transform placeForUI;
 
-    private readonly AnaliticsManager analiticsManager;
-    private readonly UnityAdsService unityAdsService;
-
     private MainMenuController mainMenuController;
     private GameController gameController;
     private SettingMenuController settingMenuController;
 
 
 
-    public MainController(Transform placeForUI, ProfilePlayer profilePlayer, AnaliticsManager analiticsManager, UnityAdsService unityAdsService)
+    public MainController(Transform placeForUI, ProfilePlayer profilePlayer)
     {
         this.profilePlayer = profilePlayer;
         this.placeForUI = placeForUI;
-        this.analiticsManager = analiticsManager;
-        this.unityAdsService = unityAdsService;
 
         profilePlayer.CurrentState.SubscribeOnChange(OnChangeGameState);
         OnChangeGameState(profilePlayer.CurrentState.Value);
@@ -41,7 +36,7 @@ internal class MainController : BaseController
             case GameState.Start:
                 gameController?.Dispose();
                 settingMenuController?.Dispose();
-                mainMenuController = new MainMenuController(placeForUI, profilePlayer, unityAdsService);
+                mainMenuController = new MainMenuController(placeForUI, profilePlayer);
 
                 break;
 
@@ -49,7 +44,7 @@ internal class MainController : BaseController
                 mainMenuController?.Dispose();
                 settingMenuController?.Dispose();
                 gameController = new GameController(profilePlayer);
-                analiticsManager.GameStarted();
+                AnaliticsManager.Instance.GameStarted();
                 break;
 
             case GameState.Setting:

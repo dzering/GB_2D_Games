@@ -13,23 +13,22 @@ namespace MyGame
 
 
         [SerializeField] private Transform PlaceForUI;
-        [SerializeField] private AnaliticsManager analiticsManager;
-        [SerializeField] private UnityAdsService unityAdsService;
 
         private MainController mainController;
 
         private void Start()
         {
             ProfilePlayer profilePlayer = new ProfilePlayer(InitiialState, SpeedCar, carType);
-            mainController = new MainController(PlaceForUI, profilePlayer, analiticsManager, unityAdsService);
+            mainController = new MainController(PlaceForUI, profilePlayer);
 
-            analiticsManager.GameLaunched();
-            if (unityAdsService.IsInitialized) OnAdsInitialized();
+            AnaliticsManager.Instance.GameLaunched();
+
+            if (UnityAdsService.Instance.IsInitialized) OnAdsInitialized();
             else
-                unityAdsService.Initialized.AddListener(OnAdsInitialized);
+                UnityAdsService.Instance.Initialized.AddListener(OnAdsInitialized);
 
         }
-        private void OnAdsInitialized() => unityAdsService.InterstitialPlayer.Play();
+        private void OnAdsInitialized() => UnityAdsService.Instance.InterstitialPlayer.Play();
 
 
         private void OnDestroy()
