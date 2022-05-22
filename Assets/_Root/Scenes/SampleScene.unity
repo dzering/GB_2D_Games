@@ -318,8 +318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlaceForUI: {fileID: 1131875857}
-  analiticsManager: {fileID: 86713275}
-  unityAdsService: {fileID: 2092567652}
 --- !u!1 &1345980805
 GameObject:
   m_ObjectHideFlags: 0
