@@ -63,13 +63,12 @@ namespace MyGame.Services.IAP
             Error("Initialization Failed");   
         }
 
-
         PurchaseProcessingResult IStoreListener.ProcessPurchase(PurchaseEventArgs purchaseEvent)
         {
-            if (purchaseValidator.Validate(purchaseEvent))
-                PurchaseSucceed.Invoke();
-            else
-                OnPurchaseFailed(purchaseEvent.purchasedProduct.definition.id, "NonValid");
+            //if (purchaseValidator.Validate(purchaseEvent))
+            //    PurchaseSucceed.Invoke();
+            //else
+            //    OnPurchaseFailed(purchaseEvent.purchasedProduct.definition.id, "NonValid");
 
             return PurchaseProcessingResult.Complete;
 
@@ -85,8 +84,6 @@ namespace MyGame.Services.IAP
         }
 
 
-
-
         public void Buy(string id)
         {
            
@@ -95,7 +92,6 @@ namespace MyGame.Services.IAP
         public void RestorePurchases()
         {
         }
-
 
 
         private void Log(string message) => Debug.Log(WrapMessage(message));
