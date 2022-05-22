@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MyGame;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -10,6 +8,7 @@ namespace MyGame
     {
         private List<GameObject> gameObjects;
         private List<BaseController> baseControllers;
+        private List<IRepository> repositories;
 
         private bool isDisposed;
 
@@ -23,8 +22,20 @@ namespace MyGame
             DisposeBaseControllers();
 
             DisposeGameObjects();
+            DisposeRepositories();
 
             OnDispose();
+        }
+
+        private void DisposeRepositories()
+        {
+            if (repositories == null)
+                return;
+            foreach (var repository in repositories)
+            {
+                repository.Dispose();
+            }
+            repositories.Clear();
         }
 
         private void DisposeGameObjects()
@@ -63,6 +74,13 @@ namespace MyGame
         {
             baseControllers ??= new List<BaseController>();
             baseControllers.Add(controller);
+        }
+
+        protected void AddRepository(IRepository repository)
+        {
+            repositories ??= new List<IRepository>();
+            repositories.Add(repository);
+
         }
     }
 }
