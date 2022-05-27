@@ -9,8 +9,14 @@ namespace MyGame.Scripts.Tools
         [SerializeField] private Text text;
         [SerializeField] private TextMeshProUGUI textMeshProUGUI;
 
+        public string Text
+        {
+            get { return GetText(); }
+            set { SetText(value); }
+        }
         private void Start() => Initialize();
         private void OnValidate() => Initialize();
+
 
 
         private void Initialize()

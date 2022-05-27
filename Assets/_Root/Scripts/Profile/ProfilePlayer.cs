@@ -1,4 +1,5 @@
 ﻿using MyGame.Tools;
+using MyGame.Features.Inventory;
 
 namespace MyGame.Profile
 {
@@ -7,6 +8,7 @@ namespace MyGame.Profile
         public readonly SubscriptionProperty<GameState> CurrentState;
         public readonly CarType currentCar;
         public readonly CarModel CarModel;
+        public readonly InventoryModel InventoryModel;
 
         public ProfilePlayer(GameState initialState, float speed, CarType transportType) : this(speed)
         {
@@ -18,6 +20,7 @@ namespace MyGame.Profile
         {
             CurrentState = new SubscriptionProperty<GameState>();
             CarModel = new CarModel(speed);
+            InventoryModel = new InventoryModel();
         }
     }
 }

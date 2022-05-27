@@ -8,10 +8,9 @@ namespace MyGame
 
     }
 
-
     internal abstract class Repository<Tkey, TValue, TConfig> : IRepository
     {
-        protected Dictionary<Tkey, TValue> items;
+        private readonly Dictionary<Tkey, TValue> items;
 
         public IReadOnlyDictionary<Tkey, TValue> Items => items;
 
@@ -26,7 +25,7 @@ namespace MyGame
 
             foreach (var config in configs)
             {
-                items[GetKey()] = CreateItem(config);
+                items[GetKey(config)] = CreateItem(config);
             }
 
             return items;
@@ -34,7 +33,7 @@ namespace MyGame
 
         protected abstract TValue CreateItem(TConfig config);
 
-        protected abstract Tkey GetKey();
+        protected abstract Tkey GetKey(TConfig config);
 
 
         public void Dispose()

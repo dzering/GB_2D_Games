@@ -5,6 +5,7 @@ namespace MyGame.Profile
         None,
         Start,
         Game,
-        Setting
+        Setting,
+        Inventory
     }
 }

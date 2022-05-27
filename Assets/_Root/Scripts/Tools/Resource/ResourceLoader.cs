@@ -13,6 +13,11 @@ namespace MyGame.Tools
         {
             return Resources.Load<Sprite>(path.Path);
         }
+
+        public static TObject LoadObject<TObject>(ResourcePath path) where TObject : Object
+        {
+            return Resources.Load<TObject>(path.Path);
+        }
         
     }
 }

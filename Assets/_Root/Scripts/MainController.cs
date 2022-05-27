@@ -1,10 +1,10 @@
-﻿using MyGame;
+﻿using UnityEngine;
+using MyGame;
 using MyGame.UI;
 using MyGame.Profile;
 using MyGame.Game;
-using UnityEngine;
 using MyGame.Services.Analitics;
-using MyGame.Services.Ads.UnityAds;
+using MyGame.Features.Inventory;
 
 internal class MainController : BaseController
 {
@@ -14,6 +14,7 @@ internal class MainController : BaseController
     private MainMenuController mainMenuController;
     private GameController gameController;
     private SettingMenuController settingMenuController;
+    private InventoryController inventoryController;
 
 
 
@@ -28,28 +29,29 @@ internal class MainController : BaseController
 
     private void OnChangeGameState(GameState gameState)
     {
+        DisposeControllers();
+
         switch (gameState)
         {
             case GameState.None:
                 break;
 
             case GameState.Start:
-                gameController?.Dispose();
-                settingMenuController?.Dispose();
                 mainMenuController = new MainMenuController(placeForUI, profilePlayer);
-
+                AddController(mainMenuController);
                 break;
 
             case GameState.Game:
-                mainMenuController?.Dispose();
-                settingMenuController?.Dispose();
                 gameController = new GameController(profilePlayer);
                 AnaliticsManager.Instance.GameStarted();
                 break;
 
             case GameState.Setting:
-                mainMenuController?.Dispose();
                 settingMenuController = new SettingMenuController(placeForUI, profilePlayer);
+                break;
+
+            case GameState.Inventory:
+                inventoryController = new InventoryController(placeForUI, profilePlayer.InventoryModel);
                 break;
 
             default:
@@ -57,10 +59,17 @@ internal class MainController : BaseController
         }
     }
 
-    protected override void OnDispose()
+    private void DisposeControllers()
     {
         mainMenuController?.Dispose();
+        settingMenuController?.Dispose();
         gameController?.Dispose();
+        inventoryController?.Dispose();
+    }
+
+    protected override void OnDispose()
+    {
+        DisposeControllers();
 
 
         profilePlayer.CurrentState.UnSubscribeOnChange(OnChangeGameState);

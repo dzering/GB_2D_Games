@@ -18,8 +18,9 @@ namespace MyGame.UI
             this.profilePlayer = profilePlayer;
             view = LoadView(placeForUI);
 
-            view.Init(StartGame, SettingMenu, OnAdsInitialize);
+            view.Init(StartGame, SettingMenu, OnAdsInitialize, InventoryMenu);
         }
+
 
         private MainMenuView LoadView(Transform placeForUI)
         {
@@ -39,6 +40,10 @@ namespace MyGame.UI
         private void SettingMenu()
         {
             profilePlayer.CurrentState.Value = GameState.Setting;
+        }
+        private void InventoryMenu()
+        {
+            profilePlayer.CurrentState.Value = GameState.Inventory;
         }
 
         private void OnAdsInitialize()
