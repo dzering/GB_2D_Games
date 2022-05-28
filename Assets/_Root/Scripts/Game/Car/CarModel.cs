@@ -1,11 +1,20 @@
-﻿namespace MyGame.Profile
+﻿using MyGame.Features.Shed.Upgrade;
+
+namespace MyGame.Profile
 {
-    internal class CarModel
+    internal class CarModel : IUpgradable
     {
-        public float Speed;
+        private float defaultSpeed;
+        public float Speed { get; set; }
         public CarModel(float speed)
         {
+            defaultSpeed = speed;
             Speed = speed;
+        }
+
+        public void Restor()
+        {
+            Speed = defaultSpeed;
         }
     }
 }
