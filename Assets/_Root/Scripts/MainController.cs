@@ -3,6 +3,8 @@ using MyGame.UI;
 using MyGame.Profile;
 using MyGame.Game;
 using UnityEngine;
+using MyGame.Services.Analitics;
+using MyGame.Services.Ads.UnityAds;
 
 internal class MainController : BaseController
 {
@@ -12,6 +14,8 @@ internal class MainController : BaseController
     private MainMenuController mainMenuController;
     private GameController gameController;
     private SettingMenuController settingMenuController;
+
+
 
     public MainController(Transform placeForUI, ProfilePlayer profilePlayer)
     {
@@ -33,12 +37,14 @@ internal class MainController : BaseController
                 gameController?.Dispose();
                 settingMenuController?.Dispose();
                 mainMenuController = new MainMenuController(placeForUI, profilePlayer);
+
                 break;
 
             case GameState.Game:
                 mainMenuController?.Dispose();
                 settingMenuController?.Dispose();
                 gameController = new GameController(profilePlayer);
+                AnaliticsManager.Instance.GameStarted();
                 break;
 
             case GameState.Setting:

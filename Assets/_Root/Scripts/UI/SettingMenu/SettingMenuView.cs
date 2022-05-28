@@ -12,6 +12,7 @@ namespace MyGame.UI
         public void Init(UnityAction backToMainMenu)
         {
             backButton.onClick.AddListener(backToMainMenu);
+
         }
 
         private void OnDestroy()

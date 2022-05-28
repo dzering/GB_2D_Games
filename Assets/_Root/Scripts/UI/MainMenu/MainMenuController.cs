@@ -3,6 +3,7 @@ using MyGame;
 using UnityEngine;
 using MyGame.UI;
 using MyGame.Tools;
+using MyGame.Services.Ads.UnityAds;
 
 namespace MyGame.UI
 {
@@ -16,7 +17,8 @@ namespace MyGame.UI
         {
             this.profilePlayer = profilePlayer;
             view = LoadView(placeForUI);
-            view.Init(StartGame, SettingMenu);
+
+            view.Init(StartGame, SettingMenu, OnAdsInitialize);
         }
 
         private MainMenuView LoadView(Transform placeForUI)
@@ -37,6 +39,12 @@ namespace MyGame.UI
         private void SettingMenu()
         {
             profilePlayer.CurrentState.Value = GameState.Setting;
+        }
+
+        private void OnAdsInitialize()
+        {
+            if(UnityAdsService.Instance.IsInitialized)
+                UnityAdsService.Instance.InterstitialPlayer.Play();
         }
     }
 }
