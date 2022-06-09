@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f68bf88b25047a040b9d13d93bbc46f4, type: 3}
-  m_Name: UpgradeItemConfigDataSource
+  m_Script: {fileID: 11500000, guid: c94fa1689c59a954f96938ffe679f873, type: 3}
+  m_Name: UpgradeSpeed2Config
   m_EditorClassIdentifier: 
-  upgradeItemConfigs:
-  - {fileID: 11400000, guid: c7b1f6a6a197abd438044201c3d8bd9c, type: 2}
-  - {fileID: 11400000, guid: c20437905762b3147999898901c441a6, type: 2}
+  itemConfig: {fileID: 11400000, guid: c449322e5eeca134f96a6f694617f3ae, type: 2}
+  <UpgradeType>k__BackingField: 1
+  <Value>k__BackingField: 3

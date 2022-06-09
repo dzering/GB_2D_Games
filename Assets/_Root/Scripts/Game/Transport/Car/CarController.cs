@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
 using MyGame.Tools;
 
-namespace MyGame.Game.Car
+namespace MyGame.Game.Transport
 {
-    internal class CarController : BaseController
+    internal class CarController : TransportController
     {
-        protected virtual ResourcePath path => new ResourcePath("Prefabs/Cars/Car");
+        private readonly ResourcePath path = new ResourcePath("Prefabs/Cars/SpeedCar");
         private readonly CarView view;
+        public override GameObject ViewGameObject => view.gameObject;
 
         public CarController()
         {
             view = LoadView();
         }
 
+
         private CarView LoadView()
         {
             GameObject prefab = ResourceLoader.LoadPref(path);
-            GameObject car = GameObject.Instantiate(prefab);
+            GameObject car = UnityEngine.Object.Instantiate(prefab);
             AddGameObject(car);
 
             return car.GetComponent<CarView>();

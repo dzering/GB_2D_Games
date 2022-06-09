@@ -13,6 +13,8 @@ namespace MyGame.Features.Shed
     {
         [SerializeField] private Button applyButton;
         [SerializeField] private Button backButton;
+
+
         public void Deinit()
         {
             applyButton.onClick.RemoveAllListeners();

@@ -2,6 +2,7 @@ using UnityEngine;
 using MyGame.Profile;
 using MyGame.Services.Analitics;
 using MyGame.Services.Ads.UnityAds;
+using MyGame.Game.Transport;
 
 namespace MyGame
 {
@@ -9,7 +10,7 @@ namespace MyGame
     {
         private const float SpeedCar = 15f;
         private const GameState InitiialState = GameState.Start;
-        private const CarType carType = CarType.SpeedCar;
+        private const TransportType carType = TransportType.SpeedCar;
 
 
         [SerializeField] private Transform PlaceForUI;

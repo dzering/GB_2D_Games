@@ -4,7 +4,7 @@ using MyGame.UI;
 using MyGame.Profile;
 using MyGame.Game;
 using MyGame.Services.Analitics;
-using MyGame.Features.Inventory;
+using MyGame.Features.Shed;
 
 internal class MainController : BaseController
 {
@@ -14,7 +14,7 @@ internal class MainController : BaseController
     private MainMenuController mainMenuController;
     private GameController gameController;
     private SettingMenuController settingMenuController;
-    private InventoryController inventoryController;
+    private ShedController shedController;
 
 
 
@@ -42,7 +42,7 @@ internal class MainController : BaseController
                 break;
 
             case GameState.Game:
-                gameController = new GameController(profilePlayer);
+                gameController = new GameController(placeForUI, profilePlayer);
                 AnaliticsManager.Instance.GameStarted();
                 break;
 
@@ -51,7 +51,7 @@ internal class MainController : BaseController
                 break;
 
             case GameState.Inventory:
-                inventoryController = new InventoryController(placeForUI, profilePlayer.InventoryModel);
+                shedController = new ShedController(placeForUI, profilePlayer);
                 break;
 
             default:
@@ -64,7 +64,7 @@ internal class MainController : BaseController
         mainMenuController?.Dispose();
         settingMenuController?.Dispose();
         gameController?.Dispose();
-        inventoryController?.Dispose();
+        shedController?.Dispose();
     }
 
     protected override void OnDispose()

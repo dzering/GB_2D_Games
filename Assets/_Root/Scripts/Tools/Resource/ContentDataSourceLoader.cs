@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using MyGame.Features.Shed.Upgrade;
 using UnityEngine;
+using MyGame.Features.AbilitySystem;
 
 namespace MyGame.Tools
 {
@@ -18,6 +19,12 @@ namespace MyGame.Tools
         {
             UpgradeItemConfigDataSource dataSource = ResourceLoader.LoadObject<UpgradeItemConfigDataSource>(path);
             return dataSource == null ? Array.Empty<UpgradeItemConfig>() : dataSource.UpgradeItemConfigs.ToArray();
+        }
+
+        public static AbilityItemConfig[] LoadAbilityItemConfigs(ResourcePath path)
+        {
+            AbilityItemConfigDataSource dataSource = ResourceLoader.LoadObject<AbilityItemConfigDataSource>(path);
+            return dataSource == null ? Array.Empty<AbilityItemConfig>() : dataSource.AbilityItemConfigs.ToArray();
         }
     }
 }
