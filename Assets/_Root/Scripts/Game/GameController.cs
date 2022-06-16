@@ -28,6 +28,7 @@ namespace MyGame.Game
             AddController(transportController);
 
             abilityController = new AbilityController(placeForUI, transportController);
+            AddController(abilityController);
 
         }
 

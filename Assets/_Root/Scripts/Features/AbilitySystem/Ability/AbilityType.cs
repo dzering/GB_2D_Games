@@ -3,6 +3,7 @@
     internal enum AbilityType
     {
         None,
-        Gun
+        Gun,
+        Jump
     }
 }

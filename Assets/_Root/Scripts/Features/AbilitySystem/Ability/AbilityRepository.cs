@@ -18,6 +18,7 @@ namespace MyGame.Features.AbilitySystem
             config.Type switch
             {
                 AbilityType.Gun => new GunAbility(config),
+                AbilityType.Jump => new JumpAbility(config),
                 _ => new StrubAbility()
             };
 

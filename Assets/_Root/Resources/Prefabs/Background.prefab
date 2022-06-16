@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3390977429648260254}
   - component: {fileID: 3390977429648260253}
   - component: {fileID: 7443445085462610699}
+  - component: {fileID: 1188237893624338163}
   m_Layer: 0
   m_Name: Ground1
   m_TagString: Untagged
@@ -99,6 +100,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3390977429648260253}
   relativeSpeedRate: 1
+--- !u!61 &1188237893624338163
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390977429648260255}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 10.22, y: -2.9}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10.24, y: 10.24}
+    newSize: {x: 45, y: 10.24}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 30.72, y: 3.98}
+  m_EdgeRadius: 0
 --- !u!1 &3390977429731008187
 GameObject:
   m_ObjectHideFlags: 0

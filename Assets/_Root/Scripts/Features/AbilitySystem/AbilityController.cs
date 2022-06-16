@@ -7,7 +7,7 @@ namespace MyGame.Features.AbilitySystem
     internal class AbilityController : BaseController
     {
         private readonly ResourcePath viewPath = new ResourcePath("Prefabs/Abilities/AbilityView");
-        private readonly ResourcePath dataSourcePath = new ResourcePath("Configs/Abilities/AbilityItemConfigDataSource"); //TODO Add string path
+        private readonly ResourcePath dataSourcePath = new ResourcePath("Configs/Abilities/AbilityItemConfigDataSource");
 
         private readonly AbilitiesView view;
         private readonly AbilityRepository repository;

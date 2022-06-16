@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7870c203ce9d5c428021cfac3de61e1, type: 3}
-  m_Name: AbilityItemConfigDataSource
+  m_Script: {fileID: 11500000, guid: f7bc7d46ab3103b4dbf773c39787fcdf, type: 3}
+  m_Name: GunItemConfig
   m_EditorClassIdentifier: 
-  abilityConfigs:
-  - {fileID: 11400000, guid: 7db97e5eaa01fca44a220f6c73e2e80a, type: 2}
-  - {fileID: 11400000, guid: 0bd91b32724c7a94eaa39c771a28d741, type: 2}
+  <Id>k__BackingField: Gun
+  <Title>k__BackingField: Gun
+  <Icon>k__BackingField: {fileID: 21300000, guid: 23f2dcab7a131324d922cfb2bd07db80, type: 3}
