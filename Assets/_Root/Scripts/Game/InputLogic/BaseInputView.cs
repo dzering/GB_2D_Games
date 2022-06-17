@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using MyGame.Tools;
+using JoostenProductions;
 
 namespace MyGame.Game.InputLogic
 {
@@ -19,6 +20,15 @@ namespace MyGame.Game.InputLogic
             this.rightMove = rightMove;
             this.speed = speed;
         }
+        private void Start()
+        {
+            UpdateManager.SubscribeToUpdate(Move);
+        }
+        private void OnDestroy()
+        {
+            UpdateManager.UnsubscribeFromUpdate(Move);
+        }
+        protected abstract void Move();
 
         protected virtual void OnLeftMove(float value)
         {

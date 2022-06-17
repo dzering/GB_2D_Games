@@ -8,18 +8,15 @@ namespace MyGame
 {
     internal class EntryPoint : MonoBehaviour
     {
-        private const float SpeedCar = 15f;
-        private const GameState InitiialState = GameState.Start;
-        private const TransportType carType = TransportType.SpeedCar;
-
-
+        [SerializeField] private GeneralSettings settings;
         [SerializeField] private Transform PlaceForUI;
-
+        
         private MainController mainController;
+
 
         private void Start()
         {
-            ProfilePlayer profilePlayer = new ProfilePlayer(InitiialState, SpeedCar, carType);
+            ProfilePlayer profilePlayer = new ProfilePlayer(settings.InitiialState, settings.SpeedCar, settings.carType);
             mainController = new MainController(PlaceForUI, profilePlayer);
 
             AnaliticsManager.Instance.GameLaunched();

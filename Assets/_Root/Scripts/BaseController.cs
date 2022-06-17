@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace MyGame
 {
-    internal abstract class BaseController
+    internal abstract class BaseController : IDisposable
     {
         private List<GameObject> gameObjects;
-        private List<BaseController> baseControllers;
-        private List<IRepository> repositories;
+        private List<IDisposable> disposables;
 
         private bool isDisposed;
 
@@ -19,23 +19,22 @@ namespace MyGame
 
             isDisposed = true;
 
-            DisposeBaseControllers();
 
             DisposeGameObjects();
-            DisposeRepositories();
+            DisposeDisposabl();
 
             OnDispose();
         }
 
-        private void DisposeRepositories()
+        private void DisposeDisposabl()
         {
-            if (repositories == null)
+            if (disposables == null)
                 return;
-            foreach (var repository in repositories)
+            foreach (IDisposable disposable in disposables)
             {
-                repository.Dispose();
+                disposable.Dispose();
             }
-            repositories.Clear();
+            disposables.Clear();
         }
 
         private void DisposeGameObjects()
@@ -49,38 +48,23 @@ namespace MyGame
             gameObjects.Clear();
         }
 
-        private void DisposeBaseControllers()
-        {
-            if (baseControllers == null)
-                return;
-
-            foreach (BaseController baseController in baseControllers)
-                baseController.Dispose();
-
-            baseControllers.Clear();
-        }
-
-        protected virtual void OnDispose()
-        {
-
-        }
         protected void AddGameObject(GameObject gameObject)
         {
             gameObjects ??= new List<GameObject>();
             gameObjects.Add(gameObject);
         }
 
-        protected void AddController(BaseController controller)
+        protected void AddController(BaseController controller) => AddDisposable(controller);
+
+        protected void AddRepository(IRepository repository) => AddDisposable(repository);
+        protected virtual void OnDispose()
         {
-            baseControllers ??= new List<BaseController>();
-            baseControllers.Add(controller);
         }
 
-        protected void AddRepository(IRepository repository)
+        private void AddDisposable(IDisposable disposable)
         {
-            repositories ??= new List<IRepository>();
-            repositories.Add(repository);
-
-        }
+            disposables ??= new List<IDisposable>();
+            disposables.Add(disposable);
+        } 
     }
 }
